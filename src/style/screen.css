@@ -1,0 +1,260 @@
+/*------------------------------------*\
+  #GENERIC
+\*------------------------------------*/
+
+:root{
+    --color-alpha: orangered;
+    --gutter: 24px;
+    --radius: 50%;
+}
+
+/*------------------------------------*\
+  #Elements
+\*------------------------------------*/
+
+html, body{
+    font-family: 'Muli', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-dark);
+}
+
+/*------------------------------------*\
+  #OBJECTS
+\*------------------------------------*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+.c-input-option {
+    margin-right: 8px;
+}
+
+.c-custom-input-option-label {
+	display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    padding-bottom: 0;
+}
+
+.c-custom-input-option {
+	display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    border: 1px solid orangered;
+    box-shadow: var(--inset-shadow);
+    transition: border var(--transition-alpha);
+    border-radius: 50%;
+}
+
+.c-custom-input-option--checkbox {
+	border-radius: var(--radius);
+}
+
+.c-custom-input-option--radio {
+	border-radius: 100%;
+}
+
+.c-custom-input-option__symbol {
+	display: block;
+    opacity: 0; /* Hide the svg initially */
+    transform: scale(.5);
+    transition: all var(--transition-alpha);
+}
+
+.c-custom-input-option--checkbox .c-custom-input-option__symbol {
+	width: 10px;
+    height: 10px;
+    fill: var(--color-alpha);
+}
+
+.c-custom-input-option--radio .c-custom-input-option__symbol {
+	background-color: var(--color-alpha);
+    border-radius: 100%;
+    width: 6px;
+    height: 6px;
+}
+
+/* hover state */
+
+.c-custom-input-option-label:hover .c-custom-input-option {
+	border-color: var(--color-neutral-xx-light);
+}
+
+/* focused and active state */
+
+.c-custom-input-option-hidden:focus + .c-custom-input-option-label .c-custom-input-option {
+    border: 1px solid var(--color-alpha-x-light);
+    box-shadow: var(--focus-shadow);
+}
+
+/* checked state */
+
+.c-custom-input-option-hidden:checked + .c-custom-input-option-label .c-custom-input-option__symbol {
+    opacity: 1; /* Show the svg when the invisible checkbox is checked */
+    transform: scale(1);
+}
+
+.c-content{
+    height: 100vh;
+    box-sizing: border-box;
+    padding: var(--gutter) calc(var(--gutter)*2) var(--gutter) 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30em; /* 56.4 * 20px = 1128px */
+}
+
+.o-section {
+    position: relative;
+}
+
+.o-section + .o-section {
+    padding-top: 24px;
+}
+
+@media (min-width: 768px) {
+    .o-section--lg + .o-section--lg,
+    .o-section--xl + .o-section--xl {
+        padding-top: 48px;
+    }
+}
+
+@media (min-width: 992px) {
+    .o-section--xl + .o-section--xl {
+        padding-top: 72px;
+    }
+}
+
+.c-add{
+    display: flex;
+    align-items: center;
+}
+
+.c-add-icon{
+    all: unset;
+    height: var(--gutter);
+    width: var(--gutter);
+    display: inline-block;
+    padding: 4px;
+}
+
+.c-add-svg{
+    height: 12px;
+    width: 12px;
+    fill: orangered;
+}
+
+.c-todo-item{
+    display:block;
+    border-top: 1px gray solid;
+    padding: calc(var(--gutter)/2) 0;
+}
+
+.c-category{
+    color: #AAAAAA;
+    margin-left: 28px;
+}
+
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: 1px solid var(--color-neutral-xxx-light);
+    border-radius: var(--radius);
+    background-color: white;
+    color: var(--color-neutral-xxxx-dark);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 11px 16px;
+    outline: none;
+    box-shadow: var(--inset-shadow);
+    transition: border var(--transition-alpha);
+}
+
+.c-input:hover {
+    border-color: orangered;
+}
+
+.c-input:focus,
+.c-input:active {
+    border-color: var(--color-alpha-x-light);
+    box-shadow: var(--focus-shadow);
+}
+
+
+.c-custom-select {
+	display: block;
+    position: relative;
+    width: 30%;
+    padding: 0;
+    margin-left: 32px;
+    margin-top: -30px;
+}
+
+/*
+.c-custom-select__symbol {
+	width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    pointer-events: none;
+    fill: var(--color-neutral-x-light);
+}
+
+.c-custom-select__input{
+    width: 30px;
+}
+
+*/
+
+
+.c-form-field--option {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+.c-form-field--floating-labels {
+	position: relative;
+}
+
+.c-custom-select__symbol {
+	width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    pointer-events: none;
+    fill: var(--color-neutral-x-light);
+}
+
+/*------------------------------------*\
+  #UTILITIES
+\*------------------------------------*/
+
+.u-rm-bt{
+    border-top: 0;
+}
